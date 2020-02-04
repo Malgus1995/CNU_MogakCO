@@ -12,3 +12,8 @@ mysql:5.7
 docker container exec -it mysql mysql -u root -p volume_test
 
 
+docker container run -v /Users/jeongseong-ug/Documents/Programming/CNU_MogakCO/2020-02-04:/tmp \
+--volumes-from mysql-data \
+busybox \
+tar cvzf /tmp/mysql-backup.tar.gz /var/lib/mysql
+
