@@ -19,14 +19,15 @@ blur_rena = rena.filter(ImageFilter.MedianFilter(7))
 
 
 from skimage import io
-from skimage.morphology import disk
+from skimage import morphology
 from skimage import color
-from skimage import filters
+
 
 img =io.imread("rena.jpg")
 img = color.rgb2gray(img)
 
-out = filters.median(img,disk(7))
+eroded_img = morphology.binary_erosion(img)
+io.imshow(eroded_img)
 
-io.imshow(out)
-io.show()
+dilation_img = morphology.binary_dilation(img)
+io.imshow(dilation_img)
